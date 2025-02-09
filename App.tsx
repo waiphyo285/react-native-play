@@ -12,9 +12,9 @@ const CustomTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#18a558',
-    secondary: '#a3ebb0',
-    tertiary: '#21b6a8',
+    primary: '#18a558', // Gold - Reward, Action, Attention
+    secondary: '#ffcc00', // Red - Excitement, Urgency, Danger
+    tertiary: '#70c837', // Neon Blue - Futuristic, Digital Vibes
   },
 };
 
@@ -22,9 +22,9 @@ const CustomDarkTheme = {
   ...MD3DarkTheme,
   colors: {
     ...MD3DarkTheme.colors,
-    primary: '#18a558',
-    secondary: '#a3ebb0',
-    tertiary: '#21b6a8',
+    primary: '#18a558', // Gold - Reward, Action, Attention
+    secondary: '#ffcc00', // Red - Excitement, Urgency, Danger
+    tertiary: '#70c837', // Neon Blue - Futuristic, Digital Vibes
   },
 };
 

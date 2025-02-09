@@ -6,7 +6,7 @@ interface ErrorStore {
 }
 
 const useThemeStore = create<ErrorStore>(set => ({
-  darkTheme: false,
+  darkTheme: true,
   setDarkTheme: darkTheme => set({ darkTheme }),
 }));
 

@@ -58,7 +58,7 @@ const DiceGame = () => {
       )}
 
       {result.winner ? (
-        <AtomCard style={{ ...styles.resultCard, backgroundColor: colors.tertiary }}>
+        <AtomCard style={{ ...styles.resultCard, backgroundColor: colors.primary }}>
           <Card.Content>
             <Text style={styles.resultText}>🧑 Player: {result.player}</Text>
             <Text style={styles.resultText}>🤖 Computer: {result.computer}</Text>
@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 20,
     marginVertical: 8,
-    color: '#fdfdfd',
   },
 });
 
