@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, KeyboardAvoidingView, View } from 'react-native';
 import { useTheme, Text, Portal, Modal } from 'react-native-paper';
-import MoleculeGameCard from '../molecules/GameCard';
+import MoleculeGameCard from '@/atomics/molecules/GameCard';
 
 const DATA = [
   {

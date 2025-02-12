@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Card, useTheme } from 'react-native-paper';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Animated, { useSharedValue, withTiming, useAnimatedStyle } from 'react-native-reanimated';
-import AtomCard from '../../atomics/atoms/Card';
-import AtomButton from '../../atomics/atoms/Button';
+import AtomCard from '@/atomics/atoms/Card';
+import AtomButton from '@/atomics/atoms/Button';
 
 const DiceGame = () => {
   const { colors } = useTheme();

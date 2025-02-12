@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import AtomCard from '../atoms/Card';
-import AtomButton from '../atoms/Button';
+import AtomCard from '@/atomics/atoms/Card';
+import AtomButton from '@/atomics/atoms/Button';
 
 interface GameCardProps {
   item: any;

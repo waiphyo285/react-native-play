@@ -5,10 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import HomeScreen from './src/screens/HomeScreen';
-import RanksScreen from './src/screens/RanksScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
-import RollDiceScreen from './src/screens/Games/RollDiceScreen';
+import HomeScreen from '@/screens/HomeScreen';
+import RanksScreen from '@/screens/RanksScreen';
+import ProfileScreen from '@/screens/ProfileScreen';
+import RollDiceScreen from '@/screens/Games/RollDiceScreen';
 
 enum RouteNames {
   GameHub = 'GameHub',

@@ -1,16 +1,13 @@
 import React, { useMemo } from 'react';
 import { PaperProvider } from 'react-native-paper';
-import { CustomTheme, CustomDarkTheme } from './src/themes/index';
-
-const REGULAR = ['title', 'bodySmall'];
-const BOLD = ['display', 'headline'];
+import { CustomTheme, CustomDarkTheme } from '@/themes/index';
 
 const AppPaperProvider = ({
-  children,
   darkTheme,
+  children,
 }: {
-  children: React.ReactNode;
   darkTheme: boolean;
+  children: React.ReactNode;
 }) => {
   const appTheme = useMemo(() => {
     const customTheme = darkTheme ? CustomDarkTheme : CustomTheme;
@@ -21,17 +18,12 @@ const AppPaperProvider = ({
         {
           ...variantProps,
           fontFamily: 'Orbitron',
-          //   fontFamily: BOLD.find(f => variantName.toLowerCase().includes(f))
-          //     ? 'Orbitron'
-          //     : REGULAR.find(f => variantName.toLowerCase().includes(f))
-          //     ? 'Orbitron'
-          //     : 'Orbitron',
         },
       ]),
     );
     return {
       ...customTheme,
-      fonts: customFonts,
+      // fonts: customFonts,
     };
   }, [darkTheme]);
 

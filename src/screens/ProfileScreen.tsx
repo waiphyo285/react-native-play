@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-native-paper';
-import useUserStore from '../store/userStore';
-import useThemeStore from '../store/themeStore';
+import useUserStore from '@/store/userStore';
+import useThemeStore from '@/store/themeStore';
 
-import ListItem from '../atomics/atoms/ListItem';
-import ToggleSwitch from '../atomics/atoms/ListItemSwitch';
-import LanguageSelector from '../atomics/organisms/LanguageSelector';
+import ListItem from '@/atomics/atoms/ListItem';
+import ToggleSwitch from '@/atomics/atoms/ListItemSwitch';
+import LanguageSelector from '@/atomics/organisms/LanguageSelector';
 
 const ProfileScreen = () => {
   const { colors } = useTheme();

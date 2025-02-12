@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import OrganismGameList from '../atomics/organisms/GameList';
+import OrganismGameList from '@/atomics/organisms/GameList';
 
 const HomeScreen = ({ navigation }: any) => {
   const { colors } = useTheme();

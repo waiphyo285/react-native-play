@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import useErrorStore from '../store/errorStore';
+import useErrorStore from '@/store/errorStore';
 
 // Create an Axios instance
 const apiClient: AxiosInstance = axios.create({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import SnackError from '../../atomics/organisms/SnackError';
-import MoleculeLoginForm from '../../atomics/molecules/LoginForm';
-import useErrorStore from '../../store/errorStore';
+import useErrorStore from '@/store/errorStore';
+import SnackError from '@/atomics/organisms/SnackError';
+import MoleculeLoginForm from '@/atomics/molecules/LoginForm';
 
 const LoginScreen = () => {
   const error = useErrorStore((state: any) => state.error);

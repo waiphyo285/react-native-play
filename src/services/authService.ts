@@ -1,5 +1,5 @@
-import userService from '../api/userService';
-import useUserStore from '../store/userStore';
+import userService from '@/api/userService';
+import useUserStore from '@/store/userStore';
 
 interface LoginData {
   email: string;

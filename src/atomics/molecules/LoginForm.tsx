@@ -1,11 +1,11 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { View, StyleSheet } from 'react-native';
-import AtomInput from '../../atomics/atoms/Input';
-import AtomButton from '../../atomics/atoms/Button';
-import authService from '../../services/authService';
-import useUserStore from '../../store/userStore';
-import { userValidationSchema } from '../../validations/userValidation';
+import AtomInput from '@/atomics/atoms/Input';
+import AtomButton from '@/atomics/atoms/Button';
+import authService from '@/services/authService';
+import useUserStore from '@/store/userStore';
+import { userValidationSchema } from '@/validations/userValidation';
 
 const MoleculeLoginForm = () => {
   const initialValues = useUserStore(state => state.initialValues);
