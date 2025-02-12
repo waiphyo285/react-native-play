@@ -10,24 +10,42 @@ const resources = {
       btn_details: 'Details',
       ban_play_now: 'Play Now',
       // Profile
-      english: 'English',
-      spanish: 'Spanish',
       email: 'Email',
+      english: 'English',
+      myanmar: 'Myanmar',
+      language: 'Language',
       dark_mode: 'Dark Mode',
-      change_language: 'Change Language',
+      // Roll Dice
+      btn_roll_dice: 'Roll Dice',
+      btn_roll_again: 'Roll Again',
+      msg_tie: "It's a tie round!",
+      msg_winner: 'You are winner!',
+      msg_loser: 'You are not winner!',
+      // General
+      player: 'Player',
+      computer: 'Computer',
     },
   },
-  es: {
+  my: {
     translation: {
       // Home
-      btn_details: 'Detalles',
-      ban_play_now: 'Jugar ahora',
+      btn_details: 'အသေးစိတ်',
+      ban_play_now: 'ကစားမယ်',
       // Profile
-      english: 'Inglés',
-      spanish: 'Español',
-      email: 'Correo Electrónico',
-      dark_mode: 'Modo Oscuro',
-      change_language: 'Cambiar Idioma',
+      email: 'အီးမေးလ်',
+      english: 'အင်္ဂလိပ်',
+      myanmar: 'မြန်မာ',
+      language: 'ဘာသာစကား',
+      dark_mode: 'Dark Mode',
+      // Roll Dice
+      btn_roll_dice: 'လှည့်မယ်',
+      btn_roll_again: 'ထပ်လှည့်မယ်',
+      msg_tie: 'သရေပွဲ ဖြစ်ပါတယ်!',
+      msg_winner: 'မင်း နိုင်ပါတယ်!',
+      msg_loser: 'မင်း ရှုံးပါတယ်!',
+      // General
+      player: 'ကစားသူ',
+      computer: 'ကွန်ပျူတာ',
     },
   },
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'react-native-paper';
 import useUserStore from '../store/userStore';
 import useThemeStore from '../store/themeStore';
 
@@ -10,8 +10,8 @@ import ToggleSwitch from '../atomics/atoms/ListItemSwitch';
 import LanguageSelector from '../atomics/organisms/LanguageSelector';
 
 const ProfileScreen = () => {
-  const { t } = useTranslation();
   const { colors } = useTheme();
+  const { t } = useTranslation();
   const user = useUserStore(state => state.user);
   const darkTheme = useThemeStore(state => state.darkTheme);
   const setDarkTheme = useThemeStore(state => state.setDarkTheme);

@@ -16,7 +16,7 @@ const LanguageSelector = () => {
   return (
     <List.Section>
       <List.Item
-        title={t('change_language')}
+        title={t('language')}
         left={() => <List.Icon icon="translate" color={colors.primary} />}
         titleStyle={[styles.listItemTitle, { color: colors.onSurface }]}
       />
@@ -28,8 +28,8 @@ const LanguageSelector = () => {
           style={styles.radioItem}
         />
         <List.Item
-          title={t('spanish')}
-          left={() => <RadioButton value="es" />}
+          title={t('myanmar')}
+          left={() => <RadioButton value="my" />}
           titleStyle={{ color: colors.onSurface }}
           style={styles.radioItem}
         />

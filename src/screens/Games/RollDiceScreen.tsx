@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, useTheme } from 'react-native-paper';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Animated, { useSharedValue, withTiming, useAnimatedStyle } from 'react-native-reanimated';
@@ -7,6 +8,7 @@ import AtomButton from '../../atomics/atoms/Button';
 
 const DiceGame = () => {
   const { colors } = useTheme();
+  const { t } = useTranslation();
   const rotate = useSharedValue(0);
   const translateY = useSharedValue(-200);
   const [result, setResult] = useState({ computer: 0, player: 0, winner: '' });
@@ -27,12 +29,12 @@ const DiceGame = () => {
       rotate.value = withTiming(720, { duration: 3000 });
 
       setTimeout(() => {
-        let winner = "It's a tie round!";
+        let winner = t('msg_tie');
 
         if (playerRoll > computerRoll) {
-          winner = 'You are winner!';
+          winner = t('msg_winner');
         } else if (playerRoll < computerRoll) {
-          winner = 'You are not winner!';
+          winner = t('msg_loser');
         }
 
         setConfig(prev => ({ ...prev, showPlayBtn: true }));
@@ -60,15 +62,22 @@ const DiceGame = () => {
       {result.winner ? (
         <AtomCard style={{ ...styles.resultCard, backgroundColor: colors.primary }}>
           <Card.Content>
-            <Text style={styles.resultText}>🧑 Player: {result.player}</Text>
-            <Text style={styles.resultText}>🤖 Computer: {result.computer}</Text>
+            <Text style={styles.resultText}>
+              🧑 {t('player')}: {result.player}
+            </Text>
+            <Text style={styles.resultText}>
+              🤖 {t('computer')}: {result.computer}
+            </Text>
             <Text style={styles.resultText}>🍻 {result.winner}</Text>
           </Card.Content>
         </AtomCard>
       ) : null}
 
       {config.showPlayBtn && (
-        <AtomButton text={result.winner ? 'Roll Again' : 'Roll Dice'} onPress={rollDice} />
+        <AtomButton
+          text={result.winner ? t('btn_roll_again') : t('btn_roll_dice')}
+          onPress={rollDice}
+        />
       )}
     </View>
   );

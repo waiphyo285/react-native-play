@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Text, useTheme } from 'react-native-paper';
+import { Card, useTheme } from 'react-native-paper';
 import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 interface AtomCardProps {
