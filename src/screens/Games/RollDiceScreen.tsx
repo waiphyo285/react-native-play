@@ -86,11 +86,12 @@ const DiceGame = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100%',
+    paddingStart: 10,
+    paddingEnd: 10,
   },
   gradient: {
     position: 'absolute',

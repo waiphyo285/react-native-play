@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
-import authService from '@/services/authService';
-import storageService from '@/services/storageService';
-
 import useAuthStore from '@/store/authStore';
 import useConfigStore from '@/store/configStore';
+
+import authService from '@/services/authService';
 import configService from '@/services/configService';
+import storageService from '@/services/storageService';
 
 import i18next from './i18next';
 import AppAuth from './AppWrapper';
@@ -25,7 +25,7 @@ const App = (): React.JSX.Element => {
   };
 
   useEffect(() => {
-    const currentUser = async () => {
+    const checkCurrentUser = async () => {
       const authStatus = await authService.currentUser();
       if (authStatus) {
         authService.setUser(authStatus.user);
@@ -55,7 +55,7 @@ const App = (): React.JSX.Element => {
 
     const initializeApp = async () => {
       await checkIntroStatus();
-      await currentUser();
+      await checkCurrentUser();
       await loadDarkTheme();
       await loadLanguage();
       setIsLoading(false);

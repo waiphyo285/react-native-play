@@ -11,6 +11,7 @@ import ProfileScreen from '@/screens/ProfileScreen';
 import RollDiceScreen from '@/screens/Games/RollDiceScreen';
 
 enum RouteNames {
+  MainTab = 'MainTab',
   GameHub = 'GameHub',
   Ranks = 'Ranks',
   Profile = 'Profile',
@@ -27,7 +28,6 @@ const HomeStackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={({ navigation, route }) => ({
-        headerShown: true,
         headerTintColor: colors.primary,
         headerStyle: { backgroundColor: colors.background },
         headerRight: () =>
@@ -37,17 +37,11 @@ const HomeStackNavigator = () => {
               size={28}
               color={colors.primary}
               style={{ marginRight: 15 }}
-              onPress={() => navigation.push(RouteNames.Profile)}
+              onPress={() => navigation.navigate(RouteNames.Profile)}
             />
           ) : null,
       })}>
       <Stack.Screen name={RouteNames.GameHub} component={HomeScreen} />
-      <Stack.Screen name={RouteNames.Profile} component={ProfileScreen} />
-      <Stack.Screen
-        name={RouteNames.RollDice}
-        component={RollDiceScreen}
-        options={{ title: 'Roll Dice' }}
-      />
     </Stack.Navigator>
   );
 };
@@ -59,7 +53,6 @@ const RanksStackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: true,
         headerTintColor: colors.primary,
         headerStyle: { backgroundColor: colors.background },
       }}>
@@ -74,7 +67,7 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName={RouteNames.GameHub}
-      screenOptions={() => ({
+      screenOptions={{
         tabBarStyle: {
           height: 60,
           paddingVertical: 12,
@@ -85,7 +78,7 @@ const BottomTabNavigator = () => {
           fontWeight: 'bold',
         },
         tabBarActiveTintColor: colors.primary,
-      })}>
+      }}>
       <Tab.Screen
         name={RouteNames.GameHub}
         component={HomeStackNavigator}
@@ -110,11 +103,60 @@ const BottomTabNavigator = () => {
   );
 };
 
+// Root Stack Navigator (Handles Full-Screen)
+const RootStackNavigator = () => {
+  const { colors } = useTheme();
+  return (
+    <Stack.Navigator>
+      {/* Bottom Tabs */}
+      <Stack.Screen
+        name={RouteNames.MainTab}
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+
+      {/* Fullscreen Screens */}
+      <Stack.Screen
+        name={RouteNames.Profile}
+        component={ProfileScreen}
+        options={({ navigation }) => ({
+          title: 'Profile',
+          headerLeft: () => (
+            <Ionicons
+              name="arrow-back"
+              size={28}
+              color={colors.primary}
+              style={{ marginLeft: 15 }}
+              onPress={() => navigation.popToTop()}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name={RouteNames.RollDice}
+        component={RollDiceScreen}
+        options={({ navigation }) => ({
+          title: 'Roll Dice',
+          headerLeft: () => (
+            <Ionicons
+              name="arrow-back"
+              size={28}
+              color={colors.primary}
+              style={{ marginLeft: 15 }}
+              onPress={() => navigation.popToTop()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 // App Navigator
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <BottomTabNavigator />
+      <RootStackNavigator />
     </NavigationContainer>
   );
 };
