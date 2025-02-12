@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import useErrorStore from '@/store/errorStore';
 import LoginForm from '@/atomics/molecules/LoginForm';
-import SnackError from '@/atomics/organisms/SnackError';
+import SnackError from '@/atomics/atoms/SnackError';
 
 const LoginScreen = () => {
   const error = useErrorStore((state: any) => state.error);

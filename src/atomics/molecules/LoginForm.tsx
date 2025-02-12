@@ -4,11 +4,13 @@ import { View, StyleSheet } from 'react-native';
 import AtomInput from '@/atomics/atoms/Input';
 import AtomButton from '@/atomics/atoms/Button';
 import authService from '@/services/authService';
-import useUserStore from '@/store/userStore';
+import useAuthStore from '@/store/authStore';
 import { userValidationSchema } from '@/validations/userValidation';
+import { useTranslation } from 'react-i18next';
 
 const MoleculeLoginForm = () => {
-  const initialValues = useUserStore(state => state.initialValues);
+  const { t } = useTranslation();
+  const initialValues = useAuthStore(state => state.initialValues);
   return (
     <Formik
       initialValues={initialValues}
@@ -17,7 +19,7 @@ const MoleculeLoginForm = () => {
       {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
         <View style={styles.formContainer}>
           <AtomInput
-            label="Email"
+            label={t('email')}
             value={values.email}
             type="email-address"
             onChangeText={handleChange('email')}
@@ -26,7 +28,7 @@ const MoleculeLoginForm = () => {
           />
 
           <AtomInput
-            label="Password"
+            label={t('password')}
             value={values.password}
             type="password"
             onChangeText={handleChange('password')}
@@ -34,7 +36,7 @@ const MoleculeLoginForm = () => {
             error={touched.password ? errors.password : undefined}
           />
 
-          <AtomButton text={'Login'} onPress={handleSubmit} style={styles.button} />
+          <AtomButton text={t('btn_login')} onPress={handleSubmit} style={styles.button} />
         </View>
       )}
     </Formik>

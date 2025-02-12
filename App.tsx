@@ -1,43 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
-import useUserStore from '@/store/userStore';
-import useThemeStore from '@/store/themeStore';
-import { getItem, setItem } from '@/helpers/localStorage';
+import authService from '@/services/authService';
+import storageService from '@/services/storageService';
+
+import useAuthStore from '@/store/authStore';
+import useConfigStore from '@/store/configStore';
 
 import i18next from './i18next';
 import AppAuth from './AppWrapper';
 import AppPaperProvider from './AppPaperProvider';
 import IntroSliderScreen from '@/screens/Onboard/StartScreen';
+import configService from '@/services/configService';
 
 const App = (): React.JSX.Element => {
-  const isLoggedIn = useUserStore(state => state.isLoggedIn);
-  const darkTheme = useThemeStore(state => state.darkTheme);
-  const setDarkTheme = useThemeStore(state => state.setDarkTheme);
-  const [isIntroDone, setIntroDone] = useState(false);
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const darkTheme = useConfigStore(state => state.darkTheme);
+  const isIntroDone = useConfigStore(state => state.introDone);
 
   const handleIntroDone = async () => {
-    await setItem('introDone', 'true');
-    setIntroDone(true);
+    configService.setIntroDone({ introDone: true });
   };
 
   useEffect(() => {
-    const loadDarkTheme = async () => {
-      const savedDarkTheme = await getItem('darkMode');
-      if (savedDarkTheme === 'true') {
-        setDarkTheme(true);
+    const currentUser = async () => {
+      const authStatus = await authService.currentUser();
+      if (authStatus) {
+        authService.setUser(authStatus.user);
       }
     };
 
     const checkIntroStatus = async () => {
-      const introStatus = await getItem('introDone');
+      const introStatus = await storageService.retrieveItem('introDone');
       if (introStatus === 'true') {
-        setIntroDone(true);
+        configService.setIntroDone({ introDone: true });
       }
     };
 
-    loadDarkTheme();
+    const loadDarkTheme = async () => {
+      const savedDarkTheme = await storageService.retrieveItem('darkTheme');
+      if (savedDarkTheme === 'true') {
+        configService.setDarkTheme({ darkTheme: true });
+      }
+    };
+
+    const loadLanguage = async () => {
+      const savedLanguage = await storageService.retrieveItem('language');
+      if (savedLanguage) {
+        i18next.changeLanguage(savedLanguage);
+      }
+    };
+
     checkIntroStatus();
+    currentUser();
+    loadDarkTheme();
+    loadLanguage();
   }, []);
 
   return (

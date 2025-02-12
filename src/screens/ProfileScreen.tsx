@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-native-paper';
 
-import useUserStore from '@/store/userStore';
-import useThemeStore from '@/store/themeStore';
-import { setItem } from '@/helpers/localStorage';
+import useAuthStore from '@/store/authStore';
+import useConfigStore from '@/store/configStore';
+import configService from '@/services/configService';
 
 import ListItem from '@/atomics/atoms/ListItem';
 import ToggleSwitch from '@/atomics/atoms/ListItemSwitch';
@@ -14,13 +14,12 @@ import LanguageSelector from '@/atomics/organisms/LanguageSelector';
 const ProfileScreen = () => {
   const { colors } = useTheme();
   const { t } = useTranslation();
-  const user = useUserStore(state => state.user);
-  const darkTheme = useThemeStore(state => state.darkTheme);
-  const setDarkTheme = useThemeStore(state => state.setDarkTheme);
+
+  const user = useAuthStore(state => state.user);
+  const darkTheme = useConfigStore(state => state.darkTheme);
 
   const handleDarkTheme = async (value: boolean) => {
-    await setItem('darkMode', String(value));
-    setDarkTheme(value);
+    configService.setDarkTheme({ darkTheme: value });
   };
 
   return (
@@ -38,12 +37,7 @@ const ProfileScreen = () => {
           styles.sectionContainer,
           { backgroundColor: colors.surface, borderColor: colors.primary },
         ]}>
-        <ToggleSwitch
-          title={t('dark_mode')}
-          value={darkTheme}
-          onToggle={handleDarkTheme}
-          icon="theme-light-dark"
-        />
+        <ToggleSwitch title={t('dark_mode')} value={darkTheme} onToggle={handleDarkTheme} />
       </View>
 
       <View

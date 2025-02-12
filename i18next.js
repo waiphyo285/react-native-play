@@ -9,6 +9,10 @@ const resources = {
       // Home
       btn_details: 'Details',
       ban_play_now: 'Play Now',
+      // Login
+      email: 'Email',
+      password: 'Password',
+      btn_login: 'Login',
       // Profile
       email: 'Email',
       english: 'English',
@@ -31,6 +35,10 @@ const resources = {
       // Home
       btn_details: 'အသေးစိတ်',
       ban_play_now: 'ကစားမယ်',
+      // Login
+      email: 'အီးမေးလ်',
+      password: 'လျို့ဝှက်နံပတ်',
+      btn_login: 'လော့ဂ်အင်',
       // Profile
       email: 'အီးမေးလ်',
       english: 'အင်္ဂလိပ်',

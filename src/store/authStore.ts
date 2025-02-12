@@ -5,7 +5,7 @@ interface User {
   password: string;
 }
 
-interface UserStore {
+interface AuthStore {
   user: User | null;
   initialValues: User;
   isLoggedIn: boolean;
@@ -13,7 +13,7 @@ interface UserStore {
   logoutUser: () => void;
 }
 
-const useUserStore = create<UserStore>(set => ({
+const useAuthStore = create<AuthStore>(set => ({
   user: null,
   initialValues: {
     email: 'hello@gmail.com',
@@ -39,4 +39,4 @@ const useUserStore = create<UserStore>(set => ({
   },
 }));
 
-export default useUserStore;
+export default useAuthStore;

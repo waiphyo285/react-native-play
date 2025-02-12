@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { List, RadioButton, useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import storageService from '@/services/storageService';
 
 const LanguageSelector = () => {
   const { colors } = useTheme();
   const { t, i18n } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+  const [language, setLanguage] = useState(i18n.language);
 
-  const handleLanguageChange = (value: string) => {
+  const handleLanguageChange = async (value: string) => {
+    setLanguage(value);
     i18n.changeLanguage(value);
-    setSelectedLanguage(value);
+    await storageService.addItem('language', value);
   };
 
   return (
@@ -20,7 +22,7 @@ const LanguageSelector = () => {
         left={() => <List.Icon icon="translate" color={colors.primary} />}
         titleStyle={[styles.listItemTitle, { color: colors.onSurface }]}
       />
-      <RadioButton.Group onValueChange={handleLanguageChange} value={selectedLanguage}>
+      <RadioButton.Group onValueChange={handleLanguageChange} value={language}>
         <List.Item
           title={t('english')}
           left={() => <RadioButton value="en" />}
