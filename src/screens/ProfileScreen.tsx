@@ -5,10 +5,14 @@ import { useTheme } from 'react-native-paper';
 
 import useAuthStore from '@/store/authStore';
 import useConfigStore from '@/store/configStore';
+
+import authService from '@/services/authService';
 import configService from '@/services/configService';
 
+import AtomButton from '@/atomics/atoms/Button';
 import ListItem from '@/atomics/atoms/ListItem';
 import ToggleSwitch from '@/atomics/atoms/ListItemSwitch';
+import AtomConfirmModal from '@/atomics/atoms/Confirmation';
 import LanguageSelector from '@/atomics/organisms/LanguageSelector';
 
 const ProfileScreen = () => {
@@ -17,9 +21,19 @@ const ProfileScreen = () => {
 
   const user = useAuthStore(state => state.user);
   const darkTheme = useConfigStore(state => state.darkTheme);
+  const showModal = useConfigStore(state => state.showModal);
 
-  const handleDarkTheme = async (value: boolean) => {
+  const handleDarkTheme = (value: boolean) => {
     configService.setDarkTheme({ darkTheme: value });
+  };
+
+  const handleModalToggle = (value: boolean) => {
+    configService.setShowModal({ showModal: value });
+  };
+
+  const handleConfirmLogout = () => {
+    configService.setShowModal({ showModal: false });
+    authService.logout({ email: user?.email as string });
   };
 
   return (
@@ -47,6 +61,24 @@ const ProfileScreen = () => {
         ]}>
         <LanguageSelector />
       </View>
+
+      <View style={[styles.logoutContainer]}>
+        <AtomButton
+          text={t('btn_logout')}
+          color={colors.tertiary}
+          onPress={() => handleModalToggle(true)}
+        />
+      </View>
+
+      <AtomConfirmModal
+        visible={showModal}
+        title={t('confirm')}
+        message={t('msg_logout')}
+        confirmText={t('btn_logout')}
+        cancelText={t('btn_cancel')}
+        onConfirm={handleConfirmLogout}
+        onCancel={() => handleModalToggle(false)}
+      />
     </View>
   );
 };
@@ -62,6 +94,10 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderWidth: 2,
     borderRadius: 10,
+  },
+  logoutContainer: {
+    marginVertical: 6,
+    paddingVertical: 6,
   },
 });
 

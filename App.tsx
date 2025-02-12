@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
 import authService from '@/services/authService';
@@ -6,14 +6,16 @@ import storageService from '@/services/storageService';
 
 import useAuthStore from '@/store/authStore';
 import useConfigStore from '@/store/configStore';
+import configService from '@/services/configService';
 
 import i18next from './i18next';
 import AppAuth from './AppWrapper';
 import AppPaperProvider from './AppPaperProvider';
+import SplashScreen from '@/screens/Onboard/SplashScreen';
 import IntroSliderScreen from '@/screens/Onboard/StartScreen';
-import configService from '@/services/configService';
 
 const App = (): React.JSX.Element => {
+  const [isLoading, setIsLoading] = useState(true);
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const darkTheme = useConfigStore(state => state.darkTheme);
   const isIntroDone = useConfigStore(state => state.introDone);
@@ -51,11 +53,20 @@ const App = (): React.JSX.Element => {
       }
     };
 
-    checkIntroStatus();
-    currentUser();
-    loadDarkTheme();
-    loadLanguage();
+    const initializeApp = async () => {
+      await checkIntroStatus();
+      await currentUser();
+      await loadDarkTheme();
+      await loadLanguage();
+      setIsLoading(false);
+    };
+
+    initializeApp();
   }, []);
+
+  if (isLoading) {
+    return <SplashScreen />;
+  }
 
   return (
     <I18nextProvider i18n={i18next}>

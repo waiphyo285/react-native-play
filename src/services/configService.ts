@@ -4,6 +4,7 @@ import { setItem } from '@/helpers/localStorage';
 interface ConfigData {
   introDone?: boolean;
   darkTheme?: boolean;
+  showModal?: boolean;
 }
 
 const configService = {
@@ -15,6 +16,10 @@ const configService = {
   setDarkTheme: async (data: ConfigData) => {
     await setItem('darkTheme', String(data.darkTheme));
     useConfigStore.getState().setDarkTheme(data.darkTheme as boolean);
+  },
+
+  setShowModal: async (data: ConfigData) => {
+    useConfigStore.getState().setShowModal(data.showModal as boolean);
   },
 };
 

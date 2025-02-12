@@ -6,6 +6,9 @@ interface ConfigStore {
 
   darkTheme: boolean;
   setDarkTheme: (isDark: boolean) => void;
+
+  showModal: boolean;
+  setShowModal: (showModal: boolean) => void;
 }
 
 const useConfigStore = create<ConfigStore>(set => ({
@@ -14,6 +17,9 @@ const useConfigStore = create<ConfigStore>(set => ({
 
   darkTheme: false,
   setDarkTheme: darkTheme => set({ darkTheme }),
+
+  showModal: false,
+  setShowModal: showModal => set({ showModal }),
 }));
 
 export default useConfigStore;

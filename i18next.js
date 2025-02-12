@@ -19,6 +19,9 @@ const resources = {
       myanmar: 'Myanmar',
       language: 'Language',
       dark_mode: 'Dark Mode',
+      btn_cancel: 'Cancel',
+      btn_logout: 'Logout',
+      msg_logout: 'Are you sure to logout?',
       // Roll Dice
       btn_roll_dice: 'Roll Dice',
       btn_roll_again: 'Roll Again',
@@ -28,6 +31,7 @@ const resources = {
       // General
       player: 'Player',
       computer: 'Computer',
+      confirm: 'Confirm',
     },
   },
   my: {
@@ -45,6 +49,9 @@ const resources = {
       myanmar: 'မြန်မာ',
       language: 'ဘာသာစကား',
       dark_mode: 'Dark Mode',
+      btn_cancel: 'ပယ်ဖျက်',
+      btn_logout: 'ထွက်မယ်',
+      msg_logout: 'ထွက်ဖို့ သေချာပြီလား?',
       // Roll Dice
       btn_roll_dice: 'လှည့်မယ်',
       btn_roll_again: 'ထပ်လှည့်မယ်',
@@ -54,6 +61,7 @@ const resources = {
       // General
       player: 'ကစားသူ',
       computer: 'ကွန်ပျူတာ',
+      confirm: 'အတည်ပြုချက်',
     },
   },
 };
