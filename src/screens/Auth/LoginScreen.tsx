@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import useErrorStore from '@/store/errorStore';
+import LoginForm from '@/atomics/molecules/LoginForm';
 import SnackError from '@/atomics/organisms/SnackError';
-import MoleculeLoginForm from '@/atomics/molecules/LoginForm';
 
 const LoginScreen = () => {
   const error = useErrorStore((state: any) => state.error);
@@ -13,8 +13,8 @@ const LoginScreen = () => {
       style={styles.background}
       resizeMode="cover">
       <View style={styles.container}>
+        <LoginForm />
         <SnackError error={error} />
-        <MoleculeLoginForm />
       </View>
     </ImageBackground>
   );

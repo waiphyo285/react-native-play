@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, KeyboardAvoidingView, View } from 'react-native';
 import { useTheme, Text, Portal, Modal } from 'react-native-paper';
-import MoleculeGameCard from '@/atomics/molecules/GameCard';
+import GameCard from '@/atomics/molecules/GameCard';
 
 const DATA = [
   {
@@ -42,7 +42,7 @@ const OrganismGameList = ({ navigation }: any) => {
         data={DATA}
         keyExtractor={item => item.id}
         renderItem={({ item }: any) => (
-          <MoleculeGameCard
+          <GameCard
             item={item}
             onPressPlay={navigateToGame}
             onPressDetails={() => openModal(item)}
