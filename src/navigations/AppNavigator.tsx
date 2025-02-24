@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -86,6 +86,18 @@ const BottomTabNavigator = () => {
         }}
       />
       <Tab.Screen
+        name="Plus"
+        component={HomeStackNavigator}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color, size }) => (
+            <View style={[styles.tabPlusButton, { backgroundColor: colors.primary }]}>
+              <Ionicons name="grid" size={size} color={'white'} />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
         name={RouteNames.Ranks}
         component={RanksStackNavigator}
         options={{
@@ -165,6 +177,15 @@ const styles = StyleSheet.create({
   tabBarLabelStyle: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  tabPlusButton: {
+    width: 66,
+    height: 66,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 25,
+    shadowRadius: 4,
   },
 });
 
