@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "764285331381",
+    "project_id": "react-native-play-login",
+    "storage_bucket": "react-native-play-login.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764285331381:android:ef145a473dfceef7641bfc",
+        "android_client_info": {
+          "package_name": "com.pyoneshonapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI_Q8nmr46IIDBEEFcqSsilUKcHvjtAvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

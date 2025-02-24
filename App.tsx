@@ -9,7 +9,7 @@ import configService from '@/services/configService';
 import storageService from '@/services/storageService';
 
 import i18next from './i18next';
-import AppAuth from './AppWrapper';
+import AppWrapper from './AppWrapper';
 import AppPaperProvider from './AppPaperProvider';
 import SplashScreen from '@/screens/Onboard/SplashScreen';
 import IntroSliderScreen from '@/screens/Onboard/StartScreen';
@@ -72,7 +72,7 @@ const App = (): React.JSX.Element => {
     <I18nextProvider i18n={i18next}>
       <AppPaperProvider darkTheme={darkTheme}>
         {isIntroDone ? (
-          <AppAuth isLoggedIn={isLoggedIn} />
+          <AppWrapper isLoggedIn={isLoggedIn} />
         ) : (
           <IntroSliderScreen onDone={handleIntroDone} />
         )}

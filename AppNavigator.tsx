@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -36,7 +37,6 @@ const HomeStackNavigator = () => {
               name="person-sharp"
               size={28}
               color={colors.primary}
-              style={{ marginRight: 15 }}
               onPress={() => navigation.navigate(RouteNames.Profile)}
             />
           ) : null,
@@ -69,14 +69,10 @@ const BottomTabNavigator = () => {
       initialRouteName={RouteNames.GameHub}
       screenOptions={{
         tabBarStyle: {
-          height: 60,
-          paddingVertical: 12,
+          ...styles.tabBarStyle,
           backgroundColor: colors.background,
         },
-        tabBarLabelStyle: {
-          fontSize: 16,
-          fontWeight: 'bold',
-        },
+        tabBarLabelStyle: styles.tabBarLabelStyle,
         tabBarActiveTintColor: colors.primary,
       }}>
       <Tab.Screen
@@ -160,5 +156,16 @@ const AppNavigator = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    height: 60,
+    paddingVertical: 12,
+  },
+  tabBarLabelStyle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 
 export default AppNavigator;
